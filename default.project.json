@@ -1,0 +1,12 @@
+{
+  "name": "SOALIS",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "SOALIS": {
+        "$path": "src"
+      }
+    }
+  }
+}
