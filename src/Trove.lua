@@ -25,21 +25,23 @@ type TroveInstance = Instance | {any} | RBXScriptConnection
 function Trove:pop(trove_instance : TroveInstance)
     if typeof(trove_instance) == "Instance" then
         trove_instance:Destroy()
-    elseif typeof(trove_instance) == 'RBXScriptConnection' then
+    elseif typeof(trove_instance) == "RBXScriptConnection" then
         trove_instance:Disconnect()
-    elseif typeof(trove_instance) == 'table' then
+    elseif typeof(trove_instance) == "table" then
         if trove_instance['Destroy'] then
             trove_instance:Destroy()
         else
-            error(`Table: "{trove_instance}" haven't "Destroy" method!`)
+            error(("Table: \"%s\" haven't \"Destroy\" method!"):format(trove_instance), 2)
         end        
     else
-        error('Unsupported type for Trove Instance!')
+        error("Unsupported type for Trove Instance!", 2)
     end
 end
 
 function Trove:put(trove_instance : TroveInstance)
     table.insert(self.troved, trove_instance)
+
+    return trove_instance
 end
 
 function Trove:Destroy()
